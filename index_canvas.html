@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  <link rel="stylesheet"
+        href="lib/bootstrap.css/index.css" />
+  <script
+       src="lib/jquery/jquery.min.js">
+  </script>
+
+  <title>Girls Day 2013</title>
+  
+  </head>
+<body>
+
+<h1>Wilkommen beim Girls Day</h1>
+
+<div class="row">
+  <div class="span6">
+    Programm
+    <div id="editor"  style="min-height:500px; font-size:18px">
+// Wilkommen beim Girls Day!
+function welcome(names) {
+    for (i=0; i < names.length; i++) {
+        var current_name = names[i];
+        var x = random(0, canvas.width);
+        var y = random(0, canvas.height);
+        canvas.fillText(current_name, x, y);
+    }
+}
+welcome(["Marie", "Helena"]);
+    </div>
+    <span><button onclick="run_code()">Run!</button></span>
+  </div>
+
+  <div class="span6"> 
+   Ausgabe
+    <canvas id="output_canvas" style="border:1px solid black; min-height:500px">
+    </canvas>
+    <span><button onclick="clear_canvas()">Clear</button></span>
+  </div>
+
+</div>
+
+<script src="lib/ace-builds/src/ace.js" 
+	type="text/javascript" charset="utf-8">
+</script>
+<script>
+  function run_code() {
+      var code = editor.getValue();
+      eval(code);
+  }
+  function clear_canvas() {
+      canvas.clearRect(0, 0, canvas.width, canvas.height);  
+  }
+  // helper to avoid having to clear about Math.floor() etc in the visible code
+  function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  var c = document.getElementById("output_canvas");
+  // yes, strictly this is not a canvas but the context
+  var canvas = c.getContext("2d");
+  // make the life of my students even more easier
+  canvas.width = c.width;
+  canvas.height = c.height;
+  // set some defaults
+  canvas.font = "20px Verdana";
+  // setup the editor
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/terminal");
+  editor.getSession().setMode("ace/mode/javascript");
+</script>
+</body>
+</html>
