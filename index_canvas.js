@@ -1,5 +1,6 @@
 
 function run_code() {
+    init_canvas();
     clearInterval(timer);
     var code = editor.getValue();
     try {
@@ -15,9 +16,18 @@ function run_code() {
         is_sad = true;
     }
 }
+function init_canvas() {
+    // set some defaults
+    canvas.font = "20px Verdana";
+    canvas.fillStyle = "black";
+}
 function clear_canvas() {
     clearInterval(timer);
-    canvas.clearRect(0, 0, canvas.width, canvas.height);  
+    init_canvas();
+    canvas.save();
+    canvas.fillStyle = "white";
+    canvas.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.restore();
 }
 // helper to avoid having to clear about Math.floor() etc in the visible code
 function random(min, max) {
@@ -38,8 +48,7 @@ var canvas = c.getContext("2d");
 // make the life of my students even more easier
 canvas.width = c.width;
 canvas.height = c.height;
-// set some defaults
-canvas.font = "20px Verdana";
+init_canvas();
 
 // get some assets
 var smiley = new Image();
