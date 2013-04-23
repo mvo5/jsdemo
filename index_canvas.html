@@ -25,6 +25,7 @@ Beispiel
   <option value="lesson_5">Arrays</option>
   <option value="lesson_6">Animation</option>
   <option value="lesson_7">Rundherum</option>
+  <option value="lesson_8">Bounce</option>
 </select>
 
 <div style="display:none">
@@ -117,7 +118,33 @@ var background = new Image();
 background.src = "http://www.weihnachtsgeschenke-tipps.de/wp-content/uploads/2010/12/filly-pferde.jpg"
 canvas.drawImage(background, middle_x, middle_y);
 
-timer = setInterval(animate, 200);
+timer = setInterval(animate, 20);
+</div>
+
+<div id="lesson_8">
+function animate() {
+    canvas.fillStyle = "white";
+    canvas.fillRect(x, y, img.width+1, img.height+1);
+    x += delta_x;
+    y += delta_y;
+    canvas.drawImage(img, x, y);
+    if (x > (canvas.width - img.width))
+        delta_x = random(-5, 0);
+    else if(x <= 0)
+        delta_x = random(0, 5)
+    if (y > (canvas.height - img.height))
+        delta_y = random(-5, 0)
+    else if (y < 0)
+        delta_y = random(5, 0)
+}
+var x = 0;
+var y = 0;
+var delta_x = random(0, 5);
+var delta_y = random(0, 5);
+var img = new Image();
+img.src = "http://www.toycraze.de/images/content/Filly-Witchy.png";
+
+timer = setInterval(animate, 10);
 </div>
 
 
