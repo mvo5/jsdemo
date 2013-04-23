@@ -15,10 +15,46 @@
 
 <h1>Wilkommen beim Girls Day</h1>
 
-<div class="row">
-  <div class="span6">
-    Programm
-    <div id="editor"  style="min-height:500px; font-size:18px">
+Beispiel
+<select id="select_lesson">
+  <option value="lesson_1">Wilkommen</option>
+  <option value="lesson_2">Variablen</option>
+  <option value="lesson_3">Schleifen</option>
+  <option value="lesson_4">Funktionen</option>
+  <option value="lesson_5">Arrays</option>
+</select>
+
+<div style="display:none">
+
+<div id="lesson_1">
+canvas.fillText("Wilkommen", 10, 100);
+</div>
+
+<div id="lesson_2">
+var x=10;
+var y=200;
+canvas.fillText("Wilkommen", x, y);
+</div>
+
+<div id="lesson_3">
+for (i=0;i<10;i++) {
+    canvas.fillText(i, i*10, i*20);
+}
+</div>
+
+<div id="lesson_4">
+// Wilkommen beim Girls Day!
+function draw_smile() {
+    for (i=0; i < 5; i++) {
+        var x = random(0, canvas.width);
+        var y = random(0, canvas.height);
+        canvas.drawImage(smiley, x-20, y);
+    }
+}
+draw_smile();
+</div>
+
+<div id="lesson_5">
 // Wilkommen beim Girls Day!
 function welcome(names) {
     for (i=0; i < names.length; i++) {
@@ -29,6 +65,16 @@ function welcome(names) {
     }
 }
 welcome(["Marie", "Helena"]);
+</div>
+
+</div>
+
+
+<div class="row" style="margin-right:auto; magin-left:auto;">
+  <div class="span6">
+    Programm
+    <div id="editor" style="min-height:500px; font-size:18px">
+      "Wilkommen!"
     </div>
     <span><button onclick="run_code()">Run!</button></span>
   </div>
@@ -60,14 +106,24 @@ welcome(["Marie", "Helena"]);
   }
   // helper to avoid having to clear about Math.floor() etc in the visible code
   function random(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+  $("#select_lesson").change(function() {
+      var lesson = "#" + this.value;
+      var code = $(lesson).text();
+      editor.setValue(code);
+  });
+
   var c = document.getElementById("output_canvas");
   // yes, strictly this is not a canvas but the context
   var canvas = c.getContext("2d");
   // make the life of my students even more easier
   canvas.width = c.width;
   canvas.height = c.height;
+  // get some assets
+  var smiley = new Image();
+  smiley.src = "assets/smile.png";
+
   // set some defaults
   canvas.font = "20px Verdana";
   // setup the editor
