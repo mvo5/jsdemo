@@ -23,6 +23,7 @@ Beispiel
   <option value="lesson_3">Schleifen</option>
   <option value="lesson_4">Funktionen</option>
   <option value="lesson_5">Arrays</option>
+  <option value="lesson_6">Timer Animation</option>
 </select>
 
 <div style="display:none">
@@ -40,6 +41,8 @@ canvas.fillText("Willkommen", x, y);
 
 <div id="lesson_3">
 for (i=0;i<10;i++) {
+    var color = "rgb(" + i*20 + "," + i + "," + i*20 +")";
+    canvas.fillStyle = color;
     canvas.fillText(i, i*10, i*20);
 }
 </div>
@@ -64,8 +67,30 @@ function welcome(names) {
         var y = random(0, canvas.height);
         canvas.fillText(current_name, x, y);
     }
+    return true;
 }
 welcome(["Marie", "Helena"]);
+</div>
+
+<div id="lesson_6">
+function animate() {
+    canvas.save();
+    canvas.fillStyle = "white";
+    canvas.fillRect(x, y, img.width, img.height);
+    canvas.restore()
+    x += 10;
+    if ((x%50) === 0) {
+        y = random(10, 100);
+    }
+    if (x > canvas.width)
+        clearInerval(timer);
+    canvas.drawImage(img, x, y);
+}
+var x = 0;
+var y = random(10, 200);
+var img = new Image();
+img.src = "http://www.2ndwind.de/wp-content/uploads/2011/09/Filly-Unicorn-Alvara-e1316258905378.jpg";
+timer = setInterval(animate, 50);
 </div>
 
 </div>
@@ -97,7 +122,10 @@ welcome(["Marie", "Helena"]);
 <script src="lib/ace-builds/src/ace.js" 
 	type="text/javascript" charset="utf-8">
 </script>
-<script src="index_canvas.js"></script>
+
+<script src="index_canvas.js"
+        type="text/javascript" charset="utf-8">
+</script>
 
 </body>
 </html>
