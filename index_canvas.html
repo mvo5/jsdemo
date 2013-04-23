@@ -28,6 +28,7 @@ Beispiel
 <div style="display:none">
 
 <div id="lesson_1">
+// Willkommen beim Girls Day!
 canvas.fillText("Willkommen", 10, 100);
 </div>
 
@@ -44,12 +45,11 @@ for (i=0;i<10;i++) {
 </div>
 
 <div id="lesson_4">
-// Willkommen beim Girls Day!
 function draw_smile() {
     for (i=0; i < 5; i++) {
         var x = random(0, canvas.width);
         var y = random(0, canvas.height);
-        canvas.drawImage(smiley, x-20, y);
+        canvas.drawImage(smiley, x, y);
     }
 }
 draw_smile();
@@ -100,7 +100,18 @@ welcome(["Marie", "Helena"]);
 <script>
   function run_code() {
       var code = editor.getValue();
-      eval(code);
+      try {
+          if(is_sad)
+              clear_canvas();
+          eval(code);
+          is_sad = false;
+      } catch(e) {
+          clear_canvas();
+          var padding = 5;
+          canvas.drawImage(sad, padding, padding);
+          canvas.fillText("Autsch: " + e, padding+sad.width+5, sad.height);
+          is_sad = true;
+      }
   }
   function clear_canvas() {
       canvas.clearRect(0, 0, canvas.width, canvas.height);  
@@ -114,7 +125,7 @@ welcome(["Marie", "Helena"]);
       var code = $(lesson).text();
       editor.setValue(code);
   });
-
+  var is_sad = false;
   var c = document.getElementById("output_canvas");
   // yes, strictly this is not a canvas but the context
   var canvas = c.getContext("2d");
@@ -124,6 +135,8 @@ welcome(["Marie", "Helena"]);
   // get some assets
   var smiley = new Image();
   smiley.src = "assets/smile.png";
+  var sad = new Image();
+  sad.src = "assets/sad.png";
 
   // set some defaults
   canvas.font = "20px Verdana";
