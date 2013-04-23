@@ -21,6 +21,7 @@ Beispiel
   <option value="lesson_1">Willkommen</option>
   <option value="lesson_2">Variablen</option>
   <option value="lesson_3">Schleifen</option>
+  <option value="lesson_3a">If</option>
   <option value="lesson_4">Funktionen</option>
   <option value="lesson_5">Arrays</option>
   <option value="lesson_6">Animation</option>
@@ -42,10 +43,22 @@ canvas.fillText("Willkommen", x, y);
 </div>
 
 <div id="lesson_3">
-for (i=0;i<10;i++) {
-    var color = "rgb(" + i*20 + "," + i + "," + i*20 +")";
+for (i=0; (i*20) < canvas.height; i++) {
+    var color = "rgb(0," + i*20 + ", 0)";
     canvas.fillStyle = color;
     canvas.fillText(i, i*10, i*20);
+}
+</div>
+
+<div id="lesson_3a">
+clear_canvas();
+var num = random(0, 3)
+if (num == 0) {
+    canvas.fillText("Willkommen", 10, 50);
+} else if (num == 1) {
+    canvas.fillText("Bonjour", 10, 100);
+} else {
+    canvas.fillText("Welcome", 10, 150);
 }
 </div>
 
