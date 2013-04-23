@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  <link rel="stylesheet"
+        href="lib/bootstrap.css/index.css" />
+  
+  <title>Girls Day 2013</title>
+  
+  </head>
+<body>
+
+<h1>Wilkommen beim Girls Day</h1>
+
+<div class="row">
+  <div id="editor" class="span6" style="min-height:500px; font-size:18px">
+// Wilkommen beim Girls Day!
+function welcome(names) {
+    for (i=0; i < names.length; i++) {
+        var x = "Hallo " + names[i];
+        console.log(x);
+    }
+};
+welcome(["Marie", "Helena"]);
+  </div>
+
+  <div class="span6"> 
+    output
+  </div>
+</div>
+
+<button onclick="run_code()">Run!</button>
+    
+<script src="lib/ace-builds/src/ace.js" 
+	type="text/javascript" charset="utf-8">
+</script>
+<script>
+  function run_code() {
+      var code = editor.getValue();
+      eval(code);
+  };
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/terminal");
+  editor.getSession().setMode("ace/mode/javascript");
+</script>
+</body>
+</html>
