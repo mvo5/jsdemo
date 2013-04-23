@@ -145,6 +145,30 @@ img.src = "http://www.toycraze.de/images/content/Filly-Witchy.png";
 timer = setInterval(animate, 10);
 </div>
 
+<div id="lesson_9">
+var isMouseDown = false;
+var mouse_pos = { x: 0, y:0 };
+canvas_element.addEventListener("mousedown", function(event) {
+   mouse_pos = get_mouse_pos(event);
+   isMouseDown = true;
+});
+canvas_element.addEventListener("mouseup", function(event) {
+  isMouseDown = false;
+});
+canvas_element.addEventListener("mousemove", function(event)  {
+  if(isMouseDown) {
+      canvas.beginPath();
+      canvas.moveTo(mouse_pos.x, mouse_pos.y);
+      mouse_pos = get_mouse_pos(event);
+      var color = "rgb(" + random(0, 255) + "," + random(0, 255) + "," + random(0,255) + ")";
+      canvas.strokeStyle = color;
+      canvas.lineWidth = 10;
+      canvas.lineTo(mouse_pos.x, mouse_pos.y);
+      canvas.stroke()
+
+  }
+});
+</div>
 
 
 </div>

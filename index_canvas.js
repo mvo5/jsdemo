@@ -33,6 +33,13 @@ function clear_canvas() {
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+// another helper to make life easier
+function get_mouse_pos(event) {
+    var rect = canvas_element.getBoundingClientRect();
+    return { x: event.clientX - rect.left,
+             y: event.clientY - rect.top
+           }
+}
 $("#select_lesson").change(function() {
     var lesson = "#" + this.value;
     var code = $(lesson).text();
@@ -42,12 +49,12 @@ $("#select_lesson").change(function() {
 var is_sad = false;
 var timer = 0;
 
-var c = document.getElementById("output_canvas");
+var canvas_element = document.getElementById("output_canvas");
 // yes, strictly this is not a canvas but the context
-var canvas = c.getContext("2d");
+var canvas = canvas_element.getContext("2d");
 // make the life of my students even more easier
-canvas.width = c.width;
-canvas.height = c.height;
+canvas.width = canvas_element.width;
+canvas.height = canvas_element.height;
 init_canvas();
 
 // get some assets
