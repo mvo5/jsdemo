@@ -1,5 +1,6 @@
 
 function run_code() {
+    clearInterval(timer);
     var code = editor.getValue();
     try {
         if(is_sad)
@@ -15,6 +16,7 @@ function run_code() {
     }
 }
 function clear_canvas() {
+    clearInterval(timer);
     canvas.clearRect(0, 0, canvas.width, canvas.height);  
 }
 // helper to avoid having to clear about Math.floor() etc in the visible code
@@ -28,6 +30,7 @@ $("#select_lesson").change(function() {
 });
 // was there a syntax error in the users code?
 var is_sad = false;
+var timer = 0;
 
 var c = document.getElementById("output_canvas");
 // yes, strictly this is not a canvas but the context

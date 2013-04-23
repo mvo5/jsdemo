@@ -23,7 +23,8 @@ Beispiel
   <option value="lesson_3">Schleifen</option>
   <option value="lesson_4">Funktionen</option>
   <option value="lesson_5">Arrays</option>
-  <option value="lesson_6">Timer Animation</option>
+  <option value="lesson_6">Animation</option>
+  <option value="lesson_7">Rundherum</option>
 </select>
 
 <div style="display:none">
@@ -92,6 +93,34 @@ var img = new Image();
 img.src = "http://www.2ndwind.de/wp-content/uploads/2011/09/Filly-Unicorn-Alvara-e1316258905378.jpg";
 timer = setInterval(animate, 50);
 </div>
+
+<div id="lesson_7">
+function animate() {
+    canvas.fillStyle = "white";
+    canvas.fillRect(x1, y1, img.width, img.height);
+    x1 = middle_x + 200*Math.cos(i*Math.PI/180);
+    y1 = middle_y + 200*Math.sin(i*Math.PI/180);
+    canvas.drawImage(img, x1, y1);
+    i += 1;
+}
+var i = 0;
+
+var img = new Image();
+img.src = "http://www.toycraze.de/images/content/Filly-Witchy.png";
+
+var x1 = 0;
+var y1 = 0;
+var middle_x = canvas.width/2 - img.width/2;
+var middle_y = canvas.height/2 - img.height/2;
+
+var background = new Image();
+background.src = "http://www.weihnachtsgeschenke-tipps.de/wp-content/uploads/2010/12/filly-pferde.jpg"
+canvas.drawImage(background, middle_x, middle_y);
+
+timer = setInterval(animate, 200);
+</div>
+
+
 
 </div>
 
