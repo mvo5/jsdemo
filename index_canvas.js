@@ -70,6 +70,8 @@ var star = new Image();
 star.src = "assets/star.png";
 var mist = new Image();
 mist.src = "assets/poop.png";
+var blume = new Image();
+blume.src = "assets/flower.png";
 
 
 // setup the editor

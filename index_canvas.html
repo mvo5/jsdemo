@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
+    <meta charset='utf-8'> 
   <link rel="stylesheet"
         href="lib/bootstrap/css/bootstrap.css" />
   <script
@@ -21,10 +21,21 @@
 canvas.fillText("Willkommen", 10, 100);
 </div>
 
+<div id="lesson_1a">
+canvas.fillText("Bilderauswahl durch meine Töchter", 10, 100);
+canvas.drawImage(blume, 340, 70);
+</div>
+
 <div id="lesson_2">
 var x=10;
 var y=200;
 canvas.fillText("Willkommen", x, y);
+</div>
+
+<div id="lesson_2a">
+for (i=1; i<5; i++) {
+     canvas.drawImage(blume, i*100, 10);
+}
 </div>
 
 <div id="lesson_3">
@@ -52,7 +63,7 @@ function draw_smile() {
     for (i=0; i < 5; i++) {
         var x = random(0, canvas.width);
         var y = random(0, canvas.height);
-        // try: smiley, sad, herz, wolke, star, mist
+        // try: smiley, sad, herz, wolke, star, mist ;)
         canvas.drawImage(smiley, x, y);
     }
 }
@@ -247,8 +258,10 @@ Beispiel
 <select id="select_lesson">
   <option>---</option>
   <option value="lesson_1">Willkommen</option>
+  <option value="lesson_1a">Bilder</option>
   <option value="lesson_2">Variablen</option>
-  <option value="lesson_3">Schleifen</option>
+  <option value="lesson_2a">Schleifen</option>
+  <option value="lesson_3">Farben</option>
   <option value="lesson_3a">If</option>
   <option value="lesson_4">Funktionen</option>
   <option value="lesson_5">Arrays</option>
