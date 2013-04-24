@@ -62,6 +62,14 @@ var smiley = new Image();
 smiley.src = "assets/smile.png";
 var sad = new Image();
 sad.src = "assets/sad.png";
+var herz = new Image();
+herz.src = "assets/herz.png";
+var wolke = new Image();
+wolke.src = "assets/wolke.png";
+var star = new Image();
+star.src = "assets/star.png";
+var mist = new Image();
+mist.src = "assets/poop.png";
 
 
 // setup the editor
