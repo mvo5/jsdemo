@@ -23,7 +23,7 @@ canvas.fillText("Willkommen", 10, 100);
 
 <div id="lesson_1a">
 canvas.fillText("Bilderauswahl durch meine Töchter", 10, 100);
-canvas.drawImage(blume, 340, 70);
+canvas.drawImage(blume, 360, 70);
 </div>
 
 <div id="lesson_2">
@@ -33,38 +33,48 @@ canvas.fillText("Willkommen", x, y);
 </div>
 
 <div id="lesson_2a">
-for (i=1; i<5; i++) {
+var i=1;
+while (i<5) {
      canvas.drawImage(blume, i*100, 10);
+     i = i + 1;
 }
 </div>
 
 <div id="lesson_2b">
-var x = 100;
+var x = 0;
 var y1 = 10;
 var y2 = 50;
-for (i=1; i<5; i++) {
-     canvas.drawImage(blume, i*100, y1);
-     canvas.drawImage(blume, (i*100)-30, y2);
-     canvas.drawImage(blume, i*100, y1);
-     canvas.drawImage(blume, (i*100)-30, y2);
+var i=1;
+while (i<5) {
+     x = i*100;
+     canvas.drawImage(blume, x, y1);
+     x = (i*100)-30;
+     canvas.drawImage(blume, x, y2);
+     i = i + 1;
 }
 </div>
 
 <div id="lesson_2c">
-for (i=1; i<5; i++) {
-    for(j=0; j<5; j++) {
+var i = 1;
+while (i<5) {
+    var j = 1;
+    while(j<5) {
          var x = i*100 + j*15;
          var y = j * 70;
          canvas.drawImage(blume, x, y);
+         j = j + 1;
     }
+    i = i + 1;
 }
 </div>
 
 <div id="lesson_3">
-for (i=0; (i*20) < canvas.height; i++) {
-    var color = rgb(0, i*20, 0);
+var i = 0;
+while ((i*20) < canvas.height) {
+    var color = "rgb(0," + i*20 + ", 0)";
     canvas.fillStyle = color;
     canvas.fillText(i, i*10, i*20);
+    i = i + 1;
 }
 </div>
 
@@ -82,11 +92,13 @@ if (num === 0) {
 
 <div id="lesson_4">
 function draw_smile() {
-    for (i=0; i < 5; i++) {
+    var i = 0; 
+    while (i < 5) {
         var x = random(0, canvas.width);
         var y = random(0, canvas.height);
-        // try: smiley, sad, herz, wolke, star, mist ;)
+        // smiley, sad, herz, wolke, star, mist ;)
         canvas.drawImage(smiley, x, y);
+        i = i + 1;
     }
 }
 draw_smile();
@@ -94,11 +106,13 @@ draw_smile();
 
 <div id="lesson_5">
 function welcome(names) {
-    for (i=0; i < names.length; i++) {
+    var i = 0;
+    while (i < names.length) {
         var current_name = names[i];
         var x = random(0, canvas.width);
         var y = random(0, canvas.height);
         canvas.fillText(current_name, x, y);
+        i = i + 1;
     }
     return true;
 }
@@ -120,40 +134,6 @@ var y = random(10, 50);
 var img = new Image();
 img.src = "http://www.2ndwind.de/wp-content/uploads/2011/09/Filly-Unicorn-Alvara-e1316258905378.jpg";
 timer = setInterval(animate, 20);
-</div>
-
-<div id="lesson_6a">
-function Star() {
-    this.x = random(canvas.width/2-10, canvas.width/2+10);
-    this.y = random(canvas.height/2-10, canvas.height/2+10);
-    this.color = rgb(random(0, 255), random(0, 255), 0);
-    if (this.x > canvas.width/2)
-        this.delta_x = random(-4, 1);
-    else
-        this.delta_x = random(1, 4);
-    if (this.y > canvas.height/2)
-        this.delta_y = random(1, 4);
-    else
-        this.delta_y = random(-4, 1);
-}
-function animate() {
-    for (i=0; i < stars.length; i++) {
-        canvas.fillStyle="white";
-        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
-        stars[i].x += stars[i].delta_x;
-        stars[i].y += stars[i].delta_y;
-        if(stars[i].x > canvas.width || stars[i].x < 0 ||
-           stars[i].y > canvas.height || stars[i].y < 0)
-           stars[i] = new Star();
-        canvas.fillStyle=stars[i].color;
-        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
-    }
-}
-stars = []
-for(i=0; i<300; i++) {
-    stars.push(new Star());
-}
-timer = setInterval(animate, 40);
 </div>
 
 <div id="lesson_7">
@@ -265,6 +245,40 @@ canvas_element.addEventListener("mousemove", function(event)  {
       canvas.stroke()
   }
 });
+</div>
+
+<div id="lesson_9a">
+function Star() {
+    this.x = random(canvas.width/2-10, canvas.width/2+10);
+    this.y = random(canvas.height/2-10, canvas.height/2+10);
+    this.color = rgb(random(0, 255), random(0, 255), 0);
+    if (this.x > canvas.width/2)
+        this.delta_x = random(-4, 1);
+    else
+        this.delta_x = random(1, 4);
+    if (this.y > canvas.height/2)
+        this.delta_y = random(1, 4);
+    else
+        this.delta_y = random(-4, 1);
+}
+function animate() {
+    for (i=0; i < stars.length; i++) {
+        canvas.fillStyle="white";
+        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
+        stars[i].x += stars[i].delta_x;
+        stars[i].y += stars[i].delta_y;
+        if(stars[i].x > canvas.width || stars[i].x < 0 ||
+           stars[i].y > canvas.height || stars[i].y < 0)
+           stars[i] = new Star();
+        canvas.fillStyle=stars[i].color;
+        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
+    }
+}
+stars = []
+for(i=0; i<300; i++) {
+    stars.push(new Star());
+}
+timer = setInterval(animate, 40);
 </div>
 
 
