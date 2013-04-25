@@ -29,6 +29,10 @@ function clear_canvas() {
     canvas.clearRect(0, 0, canvas.width, canvas.height);
     canvas.restore();
 }
+// helper for rgb colors
+function rgb(r, g, b) {
+	return 'rgb('+r+','+g+','+b+')';
+}
 // helper to avoid having to clear about Math.floor() etc in the visible code
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
