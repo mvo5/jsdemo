@@ -262,6 +262,9 @@ function Star() {
         this.delta_y = random(-4, 1);
 }
 function animate() {
+    if (stars.length < 600) {
+        stars.push(new Star());
+    }
     for (i=0; i < stars.length; i++) {
         canvas.fillStyle="white";
         canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
@@ -275,9 +278,6 @@ function animate() {
     }
 }
 stars = []
-for(i=0; i<300; i++) {
-    stars.push(new Star());
-}
 timer = setInterval(animate, 40);
 </div>
 
