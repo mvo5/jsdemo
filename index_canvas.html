@@ -259,7 +259,7 @@ canvas_element.addEventListener("mousemove", function(event)  {
       canvas.beginPath();
       canvas.moveTo(mouse_pos.x, mouse_pos.y);
       mouse_pos = get_mouse_pos(event);
-      var color = "rgb(" + random(0, 255) + "," + random(0, 255) + "," + random(0,255) + ")";
+      var color = rgb(random(0, 255), random(0, 255), random(0,255));
       canvas.strokeStyle = color;
       canvas.lineWidth = 10;
       canvas.lineTo(mouse_pos.x, mouse_pos.y);
@@ -272,7 +272,7 @@ canvas_element.addEventListener("mousemove", function(event)  {
 function Star() {
     this.x = random(canvas.width/2-10, canvas.width/2+10);
     this.y = random(canvas.height/2-10, canvas.height/2+10);
-    this.color = "rgb(" + random(0, 255) + "," + random(0, 255) + ",0)";
+    this.color = rgb(random(0, 255), random(0, 255), 0);
     if (this.x > canvas.width/2)
         this.delta_x = random(-4, 1);
     else
@@ -329,7 +329,6 @@ timer = setInterval(animate, 40);
   <option value="lesson_8">Bounce</option>
   <option value="lesson_8a">Klick mich</option>
   <option value="lesson_9">Malen!</option>
-  <option value="lesson_9a">Sterne</option>
 </select>
 </div>
 </div>
