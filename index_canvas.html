@@ -136,40 +136,6 @@ img.src = "http://www.2ndwind.de/wp-content/uploads/2011/09/Filly-Unicorn-Alvara
 timer = setInterval(animate, 20);
 </div>
 
-<div id="lesson_6a">
-function Star() {
-    this.x = random(canvas.width/2-10, canvas.width/2+10);
-    this.y = random(canvas.height/2-10, canvas.height/2+10);
-    this.color = "rgb(" + random(0, 255) + "," + random(0, 255) + ",0)";
-    if (this.x > canvas.width/2)
-        this.delta_x = random(-4, 1);
-    else
-        this.delta_x = random(1, 4);
-    if (this.y > canvas.height/2)
-        this.delta_y = random(1, 4);
-    else
-        this.delta_y = random(-4, 1);
-}
-function animate() {
-    for (i=0; i < stars.length; i++) {
-        canvas.fillStyle="white";
-        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
-        stars[i].x += stars[i].delta_x;
-        stars[i].y += stars[i].delta_y;
-        if(stars[i].x > canvas.width || stars[i].x < 0 ||
-           stars[i].y > canvas.height || stars[i].y < 0)
-           stars[i] = new Star();
-        canvas.fillStyle=stars[i].color;
-        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
-    }
-}
-stars = []
-for(i=0; i<300; i++) {
-    stars.push(new Star());
-}
-timer = setInterval(animate, 40);
-</div>
-
 <div id="lesson_7">
 function animate() {
     canvas.drawImage(background, middle_x, middle_y);
@@ -281,6 +247,40 @@ canvas_element.addEventListener("mousemove", function(event)  {
 });
 </div>
 
+<div id="lesson_9a">
+function Star() {
+    this.x = random(canvas.width/2-10, canvas.width/2+10);
+    this.y = random(canvas.height/2-10, canvas.height/2+10);
+    this.color = "rgb(" + random(0, 255) + "," + random(0, 255) + ",0)";
+    if (this.x > canvas.width/2)
+        this.delta_x = random(-4, 1);
+    else
+        this.delta_x = random(1, 4);
+    if (this.y > canvas.height/2)
+        this.delta_y = random(1, 4);
+    else
+        this.delta_y = random(-4, 1);
+}
+function animate() {
+    for (i=0; i < stars.length; i++) {
+        canvas.fillStyle="white";
+        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
+        stars[i].x += stars[i].delta_x;
+        stars[i].y += stars[i].delta_y;
+        if(stars[i].x > canvas.width || stars[i].x < 0 ||
+           stars[i].y > canvas.height || stars[i].y < 0)
+           stars[i] = new Star();
+        canvas.fillStyle=stars[i].color;
+        canvas.fillRect(stars[i].x, stars[i].y, 3, 3);
+    }
+}
+stars = []
+for(i=0; i<300; i++) {
+    stars.push(new Star());
+}
+timer = setInterval(animate, 40);
+</div>
+
 
 </div>
 
@@ -308,6 +308,7 @@ canvas_element.addEventListener("mousemove", function(event)  {
   <option value="lesson_8">Bounce</option>
   <option value="lesson_8a">Klick mich</option>
   <option value="lesson_9">Malen!</option>
+  <option value="lesson_9a">Sterne</option>
 </select>
 </div>
 </div>
