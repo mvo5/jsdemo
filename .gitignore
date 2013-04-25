@@ -1,3 +1,5 @@
+.idea/
+*.iml
 lib/ace-builds/*
 lib/bootstrap.zip
 lib/bootstrap/*
