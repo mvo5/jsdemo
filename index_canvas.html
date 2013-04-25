@@ -141,7 +141,7 @@ function animate() {
     canvas.fillStyle = "white";
     canvas.fillRect(x, y, img.width, img.height);
     x += 2;
-    if (x%20 == 0) {
+    if (x%20 === 0) {
         if(scale === 1.0)
             scale = 0.8;
         else
