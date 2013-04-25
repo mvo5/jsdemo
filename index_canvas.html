@@ -289,7 +289,7 @@ canvas_element.addEventListener("mousemove", function(event)  {
 <div class="span12">
 <h1>Willkommen beim Girls Day</h1>
 
-Beispiel
+<span class="icon-file"></span> Beispiel
 <select id="select_lesson">
   <option>---</option>
   <option value="lesson_1">Willkommen</option>
@@ -314,23 +314,24 @@ Beispiel
 
 <div class="row-fluid">
   <div class="span6">
-    Programm
+    <fieldset>
+			<legend>Programm</legend>
+
     <div id="editor" style="min-height:500px; font-size:18px">
       "Hallo!"
     </div>
-    <span><button onclick="run_code()">Run!</button></span>
+		</fieldset>
+    <span><button class="btn btn-primary" onclick="run_code()"><span class="icon-ok"></span> Run!</button></span>
   </div>
 
   <div class="span6"> 
-    <div>
-      Ausgabe
-    </div>
-    <div>
+    <fieldset>
+			<legend>Ausgabe</legend>
       <canvas id="output_canvas" width="600" height="500"
 	      style="border:1px solid black;">
       </canvas>
-    </div>
-    <span><button onclick="clear_canvas()">Clear</button></span>
+		</fieldset>
+    <span><button class="btn" onclick="clear_canvas()"><span class="icon-remove"></span> Clear</button></span>
   </div>
 
 </div>
